@@ -1,0 +1,12 @@
+
+landing.html
+login.html
+
+searchresults.html
+
+signup.html
+
+studentdetails.html
+
+teacherdetails.html
+
