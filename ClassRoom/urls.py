@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'^callAuthenticate',authenticate.authenticateUser),
     url(r'^storeStudent', storeData.storeStudent),
     url(r'^searchStudent', searchStudent.searchVal),
-    url(r'^markAttendance',searchStudent.markAttendance)
+    url(r'^markAttendance',storeData.markAttendance)
 
 ]

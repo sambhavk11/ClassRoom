@@ -1,8 +1,9 @@
 from django.template import RequestContext
 from django.http import  HttpResponse
 from django.shortcuts import  render
-
+from classapp.models import Attendance
 from classapp import models
+
 
 
 def storeStudent(request):
@@ -26,3 +27,19 @@ def storeStudent(request):
 
 
     return render(request,'landing.html')
+
+
+def markAttendance(request):
+    #print "inside search student"
+    request_context = RequestContext(request)
+    if request.method=='POST':
+        attendance=request.POST['attendance']
+        nameofst=request.POST['stdname']
+        comments=request.POST['comments']
+        student=models.Student.objects.get(name=nameofst)
+        print student
+        newAttendance=Attendance(student_id=student, status=attendance,comments=comments)
+        newAttendance.save()
+        print attendance+nameofst
+    #print "inside search student"
+    return HttpResponse("Attendance marked  "+attendance+" for  "+nameofst)
