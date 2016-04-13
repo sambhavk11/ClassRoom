@@ -2,6 +2,11 @@
 {% load staticfiles %}
 <html dir="ltr" lang="en-US">
 <head>
+<script>
+function goBack() {
+    window.history.back()
+}
+</script>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="Sambhav" />
@@ -130,7 +135,7 @@
 								<img src="../static/avatar.jpg"/>
 <br> <br><br><br><br><br><br><br><br><br>
 <center>
-								<button class="button button-3d button-red button-large nobottommargin" type="reset">Back</button> &nbsp; &nbsp; &nbsp;
+								<button class="button button-3d button-red button-large nobottommargin" onclick="goBack()">Back</button> &nbsp; &nbsp; &nbsp;
 <button  class="button button-3d button-green button-large nobottommargin"type="submit">Save</button>
 								<br>
 
