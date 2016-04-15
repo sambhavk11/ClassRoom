@@ -21,7 +21,7 @@ class Student(models.Model):
     name=models.TextField(max_length=100)
     form=models.IntegerField()
     Class=models.CharField(max_length=5)
-    image=models.ImageField(upload_to="profilepic/")
+    image=models.ImageField(upload_to="profilepic/",default="profilepic/avatar.jpg")
     GPA=models.FloatField()
     address=models.TextField(max_length=100)
     discipleRecord=models.TextField(max_length=100)
