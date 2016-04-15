@@ -19,7 +19,7 @@ import classapp.views
 from classapp.SignupLogin import signup,authenticate
 from classapp.DataAccess import storeData
 from classapp.DataAccess import searchStudent
-
+from ClassRoom import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', classapp.views.loadlogin),
@@ -32,6 +32,11 @@ urlpatterns = [
     url(r'^callAuthenticate',authenticate.authenticateUser),
     url(r'^storeStudent', storeData.storeStudent),
     url(r'^searchStudent', searchStudent.searchVal),
-    url(r'^markAttendance',storeData.markAttendance)
+    url(r'^markAttendance',storeData.markAttendance),
+    url(r'^uploadPicpage', storeData.loaduploadPic),
+    url(r'^callupload', storeData.callUpload),
+    url(r'^media/(?P<path>.*)$',
+        'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT,}),
 
 ]

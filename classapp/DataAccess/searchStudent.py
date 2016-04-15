@@ -13,7 +13,10 @@ def searchVal(request):
         searchparam=request.POST['searchField']
         print searchparam
         stdData=Student.objects.filter(name=searchparam).values()
-        print stdData
+        dictdata=stdData[0]
+        request.session['sess_student_id'] = dictdata['student_id']
+        request.session['sess_student_name']=dictdata['name']
+        print "printing session params"+str(dictdata['student_id'])
     #print "inside search student"
     return render(request,'searchresults.html',{'student':stdData})
 

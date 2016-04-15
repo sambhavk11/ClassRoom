@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+
 <html dir="ltr" lang="en-US">
 <head>
 
@@ -30,6 +31,7 @@
 	<!-- Document Title
 	============================================= -->
 	<title>ClassRoom</title>
+
 
 </head>
 
@@ -97,7 +99,8 @@
 					</div>
 
 					<div class="center bottommargin">
-						<button class="button button-3d button-red button-xlarge nobottommargin" type="submit"><i class="icon-user2"></i>Search</button></form>
+						<button class="button button-3d button-red button-xlarge nobottommargin" type="submit"><i class="icon-user2"></i>Search</button>
+						</form>
 					</div>
 
 					<div class="clear"></div>
@@ -134,8 +137,11 @@
 								</div>
 								<div class="col-md-3">
 
-								<img src="../static/avatar.jpg"/>
-								<br> <br>{% endif %}{% endfor %}
+									<p>
+										<img id="output" src="/media/{{eachStudent.image}}"/>
+								</p>
+
+								{% endif %}{% endfor %}
 <center>							<form method="GET" action="/studentDetails/">
 {% for eachstudent in  student %}	<input type="hidden" value="{{eachstudent.name}}" name="stdname"> 
 

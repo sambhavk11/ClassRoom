@@ -3,7 +3,7 @@ from django.http import  HttpResponse
 from django.shortcuts import  render
 from classapp.models import Attendance
 from classapp import models
-
+from classapp.models import Student
 
 
 def storeStudent(request):
@@ -19,8 +19,9 @@ def storeStudent(request):
         form=request.POST["form"]
         stuclass=request.POST["class"]
         modules = request.POST["modules"]
+        profileimage=request.POST["profileimage"]
 
-        newStudent=models.Student(student_id=studentID,name=name,Class=stuclass,modules=modules,address=address,GPA=gpa,discipleRecord=discipleRecord,feedback=feedback,form=form)
+        newStudent=models.Student(student_id=studentID,image=profileimage,name=name,Class=stuclass,modules=modules,address=address,GPA=gpa,discipleRecord=discipleRecord,feedback=feedback,form=form)
         newStudent.save()
         #newModuledata=models.Modules(student=newStudent, modules=modules)
         #newModuledata.save()
@@ -43,3 +44,15 @@ def markAttendance(request):
         print attendance+nameofst
     #print "inside search student"
     return HttpResponse("Attendance marked  "+attendance+" for  "+nameofst)
+
+
+def loaduploadPic(request):
+    return render(request,'uploadpics.html')
+
+def callUpload(request):
+    studentid=request.session['sess_student_id']
+    student=models.Student.objects.get(student_id=studentid)
+    student.image=request.FILES['profileimage']
+    student.save()
+    stdData =Student.objects.filter(student_id=studentid).values()
+    return render(request,"searchresults.html",{'student':stdData})

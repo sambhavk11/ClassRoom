@@ -89,80 +89,42 @@ function goBack() {
 		============================================= -->
 		<section id="content">
 
-			<form action="/storeStudent/" method="POST" enctype="multipart/form-data"><div class="panel panel-default">
 
-				{% csrf_token %}
+				<div class="panel panel-default">
+
+
 							<!-- Default panel contents -->
-	{% for eachStudent in student%}
-							<div class="panel-heading"><h3>Student Name</h3><input type="text" style="width:300px" name="studentname" value= "{{eachStudent.name}}" /></div>
+
+							<div class="panel-heading"><h3>{{request.session.sess_student_name}}</h3></div>
 							<div class="panel-body">
 
 								<div class="col-md-3">
 								<p>
-								<label> &nbsp; &nbsp; &nbsp; ID No: </label>&nbsp; &nbsp;
-								<input type="text" style="width:60px" name="studentID" value={{eachStudent.student_id}} /> <br><br>
-								<label>Address: </label>&nbsp; &nbsp;
-								<input type="text" style="width:200px; height:50px" name="address" value="{{eachStudent.address}}" />
-								<br><br>
-								<label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;GPA: </label>&nbsp; &nbsp;
-								<input type="text" style="width:60px" name="gpa" value= {{eachStudent.GPA}} />
-								</p>
+								<label> &nbsp; &nbsp; &nbsp; ID No:{{request.session.sess_student_id}} </label>&nbsp; &nbsp;
 
-								<label>Disciple Record: </label>&nbsp; &nbsp;
-								<input type="text" style="height:100px; width:200px" name="discrecord" value="{{eachStudent.discipleRecord}}"/>
-								<br><br>
-
-								<label>Feedback: </label><br>
-								<input type="text" style="height:100px; width:200px" name="feedback" value= "{{eachStudent.feedback}}" />
-								<br><br>
-
-								</div>
-								<div class="col-md-3">
-								<p>
-								<label>Form: </label>&nbsp; &nbsp; &nbsp;
-								<input type="text" style="width:60px" name="form" value= "{{eachStudent.form}}"/>
-								<br><br><br><br><br><br><br>
-								<label>Modules: </label>&nbsp; &nbsp;
-								<input type="text" style="height:200px; width:230px" name="modules" value="{{eachStudent.modules}}" />
-								<br><br>
 								</p>
 
 								</div>
-								<div class="col-md-3">
-								<p>
-								<label>Class: </label>&nbsp; &nbsp; &nbsp;
-								<input type="text" style="width:60px" name="class" value="{{eachStudent.Class}}"  />
-								</p>
-
-								</div>
+								<form action="/callupload/" method="POST"  enctype="multipart/form-data">
+								{% csrf_token %}
 								<div class="col-md-3">
 
-								<center>
+								<img id="output" src="../static/avatar.jpg"  style="height:270px; width:270px"/>
+									<input type="file" accept="image/*" onchange="loadFile(event)" class="button button-3d button-mini button-rounded button-blue"  name="profileimage">
 
-									<a href="/uploadPicpage/"><img id="output" src="/media/{{eachStudent.image}}"  style="height:270px; width:270px"/><br>Click to change
-</a>
-									<input type="hidden" name="profileimage" value="{{eachStudent.image}}">
+<br>
 
-<br> <br><br>
-<center>
-								<button class="button button-3d button-red button-large nobottommargin" onclick="goBack()">Back</button> &nbsp; &nbsp; &nbsp;
-<button  class="button button-3d button-green button-large nobottommargin"type="submit">Save</button>
+
+<button  class="button button-3d button-green button-large nobottommargin" style="width:270px" type="submit">Save</button>
 								<br>
-
 								</div>
-
-
-
-
-
-
-						</div>
+							</div>
 
 
 
 
 				</div>
-{% endfor %}
+
 </form>
 
 		</section><!-- #content end -->
@@ -190,7 +152,7 @@ function goBack() {
 
 				<div class="container clearfix">
 
-					<div class="col_half">
+					<div class="col_half"><br>
 						Copyrights &copy; 2016 All Rights Reserved.<br>
 						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
 					</div>

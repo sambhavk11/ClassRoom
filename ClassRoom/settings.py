@@ -35,6 +35,10 @@ STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS=(os.path.join('static'),)
 # Application definition
 
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,8 +94,8 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-db_from_env = dj_database_url.config()
-DATABASES['default'] =dj_database_url.config()
+#db_from_env = dj_database_url.config()
+#DATABASES['default'] =dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
