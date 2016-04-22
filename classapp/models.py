@@ -43,6 +43,7 @@ class Student(models.Model):
 class Attendance(models.Model):
     attendance_id=models.AutoField(primary_key=True)
     status=models.TextField(max_length=10)
+    studentname=models.TextField(max_length=100,default="No Name")
     student_id=models.ForeignKey(Student,on_delete=models.CASCADE)
     attDate=models.DateTimeField(default=timezone.now,blank=False)
     comments=models.TextField(max_length=200, default=" ")

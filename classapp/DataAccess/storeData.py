@@ -39,7 +39,7 @@ def markAttendance(request):
         comments=request.POST['comments']
         student=models.Student.objects.get(name=nameofst)
         print student
-        newAttendance=Attendance(student_id=student, status=attendance,comments=comments)
+        newAttendance=Attendance(student_id=student,studentname=nameofst,status=attendance,comments=comments)
         newAttendance.save()
         print attendance+nameofst
     #print "inside search student"

@@ -14,6 +14,7 @@ def searchVal(request):
         print searchparam
         stdData=Student.objects.filter(name=searchparam).values()
         dictdata=stdData[0]
+        print stdData
         request.session['sess_student_id'] = dictdata['student_id']
         request.session['sess_student_name']=dictdata['name']
         print "printing session params"+str(dictdata['student_id'])
